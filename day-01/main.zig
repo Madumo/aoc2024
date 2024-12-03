@@ -41,4 +41,20 @@ pub fn main() anyerror!void {
     }
 
     std.debug.print("Total: {}\n", .{totalDistance});
+
+    var similarityScore: i32 = 0;
+
+    for (firstList.items) |leftValue| {
+        var appearance: u16 = 0;
+
+        for (secondList.items) |rightValue| {
+            if (leftValue == rightValue) {
+                appearance += 1;
+            }
+        }
+
+        similarityScore += leftValue * appearance;
+    }
+
+    std.debug.print("Similarity Score: {}\n", .{similarityScore});
 }
